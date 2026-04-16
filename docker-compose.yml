@@ -4,7 +4,7 @@ services:
   neo4j:
     image: neo4j:5.12.0
     container_name: meetlibai-neo4j
-    restart: always
+    restart: unless-stopped
     ports:
       - "7474:7474"
       - "7687:7687"

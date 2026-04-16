@@ -165,26 +165,26 @@
 
 #### 3. 建立图数据库<img src="https://dist.neo4j.com/wp-content/uploads/20170726233003/hello-world-neo4j-inc-company-name-change.png" alt="Hello, World: Neo4j, Inc." width="80" />
 
-- ##### 请根据以下指引，安装neo4j
+- ##### 本项目推荐并默认只使用 Docker 启动 Neo4j
 
-[使用docker安装](https://hub.docker.com/_/neo4j)<img src="https://avatars.githubusercontent.com/u/5429470?s=280&v=4" alt="Docker · GitHub" width="50" />
+> 重要：请不要同时启动 Windows 本机 Neo4j 服务，否则 `7474` / `7687` 会发生端口冲突。
 
-> You can start a Neo4j container like this:
->
-> ```console
-> docker run \
->     --publish=7474:7474 --publish=7687:7687 \
->     --volume=$HOME/neo4j/data:/data \
->     neo4j:5.12.0
-> ```
->
-> which allows you to access neo4j through your browser at [http://localhost:7474](http://localhost:7474/).
->
-> This binds two ports (`7474` and `7687`) for HTTP and Bolt access to the Neo4j API. A volume is bound to `/data` to allow the database to be persisted outside the container.
->
-> By default, this requires you to login with `neo4j/neo4j` and change the password. You can, for development purposes, disable authentication by passing `--env=NEO4J_AUTH=none` to docker run.
+先在项目根目录执行：
 
-- 当然，也可以不使用docker，直接在你的操作系统上安装neo4j并启动服务即可。
+```bash
+docker compose up -d neo4j redis
+```
+
+启动后可通过以下地址访问：
+
+- Neo4j Browser: [http://localhost:7474](http://localhost:7474/)
+- Bolt 连接: `bolt://localhost:7687`
+
+如需停止：
+
+```bash
+docker compose down
+```
 
 - ##### 安装完成后，将数据导入neo4j     :smiling_imp:
 
@@ -369,6 +369,8 @@ score表示得分，value表示一条数据，value中的的各个字段值用##
 [飞花令功能详细安装以及使用](./docs/game_fog.md)
 
 #### 7. 程序启动(三种方式)
+
+> 启动顺序建议：先执行 `docker compose up -d neo4j redis`，再启动 Python 应用。
 
 - [x] 后台启动 :baby_bottle:
 
