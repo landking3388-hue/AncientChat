@@ -180,7 +180,7 @@ docker compose up -d neo4j redis
 - Neo4j Browser: [http://localhost:7474](http://localhost:7474/)
 - Bolt 连接: `bolt://localhost:7687`
 
-如需停止：
+ 如需停止：
 
 ```bash
 docker compose down
