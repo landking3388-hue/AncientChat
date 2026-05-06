@@ -184,3 +184,4 @@ config/config-me.yaml
 /logs/
 /flow.py
 /nohup.out
+config/config-local.yaml
