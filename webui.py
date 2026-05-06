@@ -37,7 +37,7 @@ def run_webui():
         concurrency_limit=4,
     )
 
-    chat_app.launch(server_name="0.0.0.0"
+    chat_app.launch(server_name=Config.get_instance().get_with_nested_params("server", "ui_host")
                     , server_port=int(Config.get_instance().get_with_nested_params("server", "ui_port"))
                     , share=Config.get_instance().get_with_nested_params("server", "ui_share")
                     , max_threads=10)
