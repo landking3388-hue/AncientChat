@@ -70,7 +70,7 @@ def images_generation_tool(
 ) -> Tuple[Tuple[str, str], QuestionType]:
     text = extract_image_text(question, history)
     image_url = generate_image(text)
-    return (image_url, "图片"), QuestionType.IMAGES
+    return f"![图片]({image_url})", QuestionType.IMAGES
 
 
 def audio_generation_tool(
