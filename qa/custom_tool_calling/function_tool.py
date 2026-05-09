@@ -81,7 +81,10 @@ def audio_generation_tool(
     lang = extract_language(question)
     gender = extract_gender(question)
     model_name = get_tts_model_name(lang=lang, gender=gender)
-    audio_file = generate_audio(text, model_name)
+    try:
+        audio_file = generate_audio(text, model_name)
+    except Exception as exc:
+        return (f"语音生成失败：{exc}", "语音"), QuestionType.AUDIO
     return (audio_file, "语音"), QuestionType.AUDIO
 
 
