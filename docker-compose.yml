@@ -11,9 +11,10 @@ services:
     environment:
       NEO4J_server_memory_heap_initial__size: 512m
       NEO4J_server_memory_heap_max__size: 1g
+      NEO4J_AUTH: neo4j/12345678
     volumes:
-      - neo4j_data:/data
-      - neo4j_logs:/logs
+      - C:\Users\14791\Desktop\Project\python\Meet-LiBai\neo4j-data:/data
+      - C:\Users\14791\Desktop\Project\python\Meet-LiBai\neo4j-logs:/logs
       - ./neo4j/plugins:/plugins
 
   redis:
@@ -31,5 +32,8 @@ services:
 
 volumes:
   neo4j_data:
+    name: meetlibai_neo4j_data
   neo4j_logs:
+    name: meetlibai_neo4j_logs
   redis_data:
+    name: meetlibai_redis_data
