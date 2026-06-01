@@ -10,9 +10,8 @@ import os
 from dotenv import load_dotenv, dotenv_values
 
 load_dotenv(".env", override=False)  # take environment variables from .env.
-print(f"setting environment variables: {dotenv_values('.env')}")
-
-
+loaded_env = dotenv_values(".env")
+print(f"setting environment variables: {list(loaded_env.keys())}")
 def get_app_root():
     return os.getcwd()
 
