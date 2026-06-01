@@ -19,7 +19,7 @@ __AVATAR = (os.path.join(get_app_root(), "resource/avatar/user.png"),
 def run_webui():
     chat_app = gr.ChatInterface(
         ChatBot().chat,
-        chatbot=gr.Chatbot(height=400, avatar_images=__AVATAR),
+        chatbot=gr.Chatbot(height=700, avatar_images=__AVATAR),
         textbox=gr.Textbox(placeholder="请输入你的问题", container=False, scale=7),
         title="「遇见李白」📒",
         description="你可以问关于李白的一切",
