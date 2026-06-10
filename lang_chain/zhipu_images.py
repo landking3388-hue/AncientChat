@@ -14,7 +14,7 @@ __client = ZhipuAI(api_key=get_env_value("ZHIPUAI_API_KEY"))
 
 def generate(text):
     response = __client.images.generations(
-        model="cogview-3",  # 填写需要调用的模型名称
+        model="GLM-Image",  # 填写需要调用的模型名称 cogview-3 GLM-Image
         prompt=text,
     )
 
