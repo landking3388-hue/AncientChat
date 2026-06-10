@@ -6,6 +6,7 @@
 # @Affiliation: tfswufe.edu.cn
 from typing import List
 
+from config.config import Config
 from icecream import ic
 
 from lang_chain.client.client_factory import ClientFactory
@@ -30,6 +31,14 @@ def parse_question(question: str) -> QuestionType:
     question_type = QUESTION_MAP[parse_result]
     ic(question_type)
 
+    try:
+        normal_qa_mode = Config.get_instance().get_with_nested_params("lang-chain", "normal_qa")
+    except KeyError:
+        normal_qa_mode = "llm"
+
+    if normal_qa_mode == "rag" and question_type == QuestionType.UNKNOWN:
+        return QuestionType.DOCUMENT
+
     return question_type
 
 
@@ -45,3 +54,4 @@ def check_entity(question: str) -> List[_Value] | None:
 
     else:
         return None
+
