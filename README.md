@@ -1,7 +1,7 @@
 <div align='center'>
  <img src="resource/avatar/libai.jpeg" alt="libai avatar" width="200" />
 
-  # 「遇见李白」<img src="asset/images/meet-libai-logo.png" alt="meet-libai logo" width="50" /> meet-libai
+  # 「古人有话说」<img src="asset/images/AncientChat-logo.png" alt="AncientChat logo" width="50" /> AncientChat
 
 </div>
 
@@ -9,13 +9,13 @@
 
 ------
 
-[![Release Notes](https://img.shields.io/github/release/BinNong/meet-libai)](https://github.com/BinNong/meet-libai/releases)
+[![Release Notes](https://img.shields.io/github/release/BinNong/AncientChat)](https://github.com/BinNong/AncientChat/releases)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/BinNong/meet-libai)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/BinNong/meet-libai)
-[![GitHub star chart](https://img.shields.io/github/stars/BinNong/meet-libai?style=social)](https://star-history.com/#BinNong/meet-libai)
-[![Dependency Status](https://img.shields.io/librariesio/github/BinNong/meet-libai)](https://libraries.io/github/BinNong/meet-libai)
-[![Open Issues](https://img.shields.io/github/issues-raw/BinNong/meet-libai)](https://github.com/BinNong/meet-libai/issues)
+[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/BinNong/AncientChat)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/BinNong/AncientChat)
+[![GitHub star chart](https://img.shields.io/github/stars/BinNong/AncientChat?style=social)](https://star-history.com/#BinNong/AncientChat)
+[![Dependency Status](https://img.shields.io/librariesio/github/BinNong/AncientChat)](https://libraries.io/github/BinNong/AncientChat)
+[![Open Issues](https://img.shields.io/github/issues-raw/BinNong/AncientChat)](https://github.com/BinNong/AncientChat/issues)
 
  :vertical_traffic_light:  [哔哩哔哩详细视频介绍和引导](https://www.bilibili.com/video/BV17m41167KQ/?spm_id_from=333.788&vd_source=1a1de2338b5f002609ba8cca8fb71a13)
 
@@ -23,22 +23,22 @@
 
 ### 1. 项目背景
 
-​       李白 :bust_in_silhouette: 作为唐代杰出诗人，其诗歌作品在中国文学史上具有重要地位。近年来，随着数字技术和人工智能的快速发展，传统文化普及推广的形式也面临着创新与变革。国内外对于李白诗歌的研究虽已相当深入，但在数字化、智能化普及方面仍存在不足。因此，本项目旨在通过构建李白知识图谱，结合大模型训练出专业的AI智能体，以生成式对话应用的形式，推动李白文化的普及与推广。
+​       中国古代文学、历史人物与传统文化典故承载着丰富的思想、审美与时代记忆。近年来，随着数字技术和人工智能的快速发展，传统文化的普及方式正在从单向阅读走向互动问答、情境化讲解和智能化探索。因此，本项目以「古人有话说」为核心定位，尝试通过知识图谱与大模型技术，将诗人、作品、历史背景、人物关系和文化典故组织成可对话、可检索、可扩展的智能文化应用。
 
 ​       随着人工智能技术的发展，知识图谱技术也得到了广泛的应用。知识图谱是一种基于语言知识库的语义表示模型，它能够将结构化的知识表示为图的形式，从而使得机器能够更好地理解和处理自然语言。
-​      在知识图谱技术的基础上，开发一个问答系统可以利用知识图谱中的知识来回答用户的问题。<u>该系统可以利用知识图谱来构建以诗人李白为核心的古诗词文化知识图谱</u> :globe_with_meridians: ，并实现基于该知识图谱的问答功能。另外，对图谱进行可视化探索，以更好地理解知识图谱的结构和内容。同时提供，大模型以及rag检索增强的代码实现。
+​      在知识图谱技术的基础上，开发一个问答系统可以利用图谱中的结构化知识来回答用户的问题。<u>该系统可以构建面向古代人物、古诗词作品、历史事件与文化关系的知识图谱</u> :globe_with_meridians: ，并实现基于该知识图谱的问答功能。另外，对图谱进行可视化探索，以更好地理解知识图谱的结构和内容。同时提供，大模型以及rag检索增强的代码实现。
 
 
 
 ### 2. 项目目标
 
-2.1 :1st_place_medal: 收集整理李白诗歌及其相关文化资料：通过文献调研、数据挖掘等方法，全面收集李白的诗歌作品、生平事迹、历史背景等相关资料，为构建李白知识图谱提供基础数据。
+2.1 :1st_place_medal: 收集整理古代人物、诗词作品及相关文化资料：通过文献调研、数据挖掘等方法，系统收集诗词文本、人物生平、历史背景、典故出处和人物关系等资料，为构建古代文化知识图谱提供基础数据。
 
-2.2 :2nd_place_medal: 构建李白知识图谱：利用自然语言处理、信息抽取等技术，对收集到的资料进行整理和分析，构建出一个完整的李白知识图谱。该图谱将涵盖李白的生平、诗歌风格、艺术成就等多个方面，为后续的AI智能体训练提供丰富的知识库。
+2.2 :2nd_place_medal: 构建古代文化知识图谱：利用自然语言处理、信息抽取等技术，对收集到的资料进行整理和分析，构建覆盖人物、作品、朝代、地点、事件、关系和主题的知识图谱，为后续的AI智能体训练提供丰富的知识库。
 
-2.3 :3rd_place_medal: 训练专业的AI智能体：基于构建好的李白知识图谱，利用大模型技术训练出具有专业水平的AI智能体。该智能体将具备对李白诗歌的深入理解和鉴赏能力，能够与用户进行高质量的互动。
+2.3 :3rd_place_medal: 训练专业的AI智能体：基于构建好的古代文化知识图谱，结合大模型技术训练出具有文化问答、诗词鉴赏、典故解释和人物关系分析能力的AI智能体，能够与用户进行高质量的互动。
 
-2.4 :four:开发生成式对话应用：在训练好的AI智能体基础上，开发一款生成式对话应用。该应用将能够实现与用户的实时互动，为用户提供个性化的李白诗歌鉴赏体验。
+2.4 :four:开发生成式对话应用：在训练好的AI智能体基础上，开发一款生成式对话应用。该应用将能够实现与用户的实时互动，为用户提供个性化的古诗词赏析、历史人物问答、文化知识检索和创意内容生成体验。
 
 ### 3. 项目技术栈
 
@@ -75,7 +75,7 @@
 ### 4. 项目功能
 
 - 数据预处理：对古诗词数据进行清洗、分词、构建知识图谱
-- 知识图谱构建：利用知识图谱技术构建以李白为核心的古诗词文化知识图谱
+- 知识图谱构建：利用知识图谱技术构建以古代文人为核心的古诗词文化知识图谱
   - 问答系统构建：利用知识图谱中的知识来回答用户的问题   
     - 图谱可视化：对知识图谱进行可视化探索，以更好地理解知识图谱的结构和内容   
 - :hotsprings:图谱问答思路：
