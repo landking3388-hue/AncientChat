@@ -21,7 +21,7 @@ def run_webui():
         ChatBot().chat,
         chatbot=gr.Chatbot(height=700, avatar_images=__AVATAR),
         textbox=gr.Textbox(placeholder="请输入你的问题", container=False, scale=7),
-        title="「遇见李白」📒",
+        title="「古人有话说」📒",
         description="你可以问关于李白的一切",
         theme="default",
         examples=["您好", "李白与高力士的关系是什么", "杜甫是谁", "李白会写代码吗", "请生成李白在江边喝酒的图片",
