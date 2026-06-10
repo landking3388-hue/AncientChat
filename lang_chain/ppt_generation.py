@@ -39,7 +39,7 @@ def generate(ppt_content: Dict) -> str:
     # PPT首页
     slide = ppt.slides.add_slide(ppt.slide_layouts[0])  # title&subtitle layout
     slide.placeholders[0].text = ppt_content['title']
-    slide.placeholders[1].text = "--来自「遇见李白」"
+    slide.placeholders[1].text = "--来自「古人有话说」"
 
     # 内容页
     ic(f'总共{len(ppt_content["pages"])}页')
