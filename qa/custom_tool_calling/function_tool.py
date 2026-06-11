@@ -26,7 +26,7 @@ from lang_chain.ppt_generation import generate as generate_ppt
 from lang_chain import rag_chain
 from lang_chain.poetry_search import search_by_chinese, search_by_poetry
 from lang_chain.retriever.chinese_text_for_poetry_retriever import extract_text
-from qa.custom_tool_calling.prompt_templates import HELLO_ANSWER_TEMPLATE, LLM_HINT
+from qa.custom_tool_calling.prompt_templates import HELLO_ANSWER_TEMPLATE
 
 _dao = GraphDao()
 
@@ -142,9 +142,8 @@ def process_unknown_question_tool(
         question: str,
         history: List[List[str] | None] = None,
 ) -> Tuple[Tuple[str, Stream[ChatCompletionChunk]], QuestionType]:
-    head_: str = ClientFactory().get_client().chat_with_ai(LLM_HINT)
-    response = ClientFactory().get_client().chat_with_ai_stream(question, history[-5:])
-    return (head_, response), QuestionType.UNKNOWN
+    response = ClientFactory().get_client().chat_with_ai_stream(question, (history or [])[-5:])
+    return ("", response), QuestionType.UNKNOWN
 
 
 TOOLS_MAPPING = {
