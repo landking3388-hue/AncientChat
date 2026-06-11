@@ -22,7 +22,7 @@ def run_webui():
         chatbot=gr.Chatbot(height=700, avatar_images=__AVATAR),
         textbox=gr.Textbox(placeholder="请输入你的问题", container=False, scale=7),
         title="「古人有话说」📒",
-        description="你可以问关于李白的一切",
+        description="你可以问古代人物、诗词典故和传统文化",
         theme="default",
         examples=["您好", "李白与高力士的关系是什么", "杜甫是谁", "李白会写代码吗", "请生成李白在江边喝酒的图片",
                   "你认为杜甫最好的一首诗是哪一首？", "请将这首诗转成语音", "请将这首诗转成语音,语种设置为陕西话","根据参考文献回答，李白在哪里出生",
