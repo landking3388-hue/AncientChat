@@ -48,7 +48,7 @@ GET_HELLO_INFO = {
     "type": "function",
     "function": {
         "name": "get_hello_info",
-        "description": "回应用户的问候，比如，用户问候“您好”，就要调用这个工具",
+        "description": "回应用户的问候、开场白或身份介绍问题；以「古人有话说」这个模拟古人谈吐风格的 AI 身份回答，不要扮演某个特定人物",
         "parameters": {
             "type": "object",
             "properties": {
