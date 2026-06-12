@@ -4,7 +4,6 @@
 # @FileName: tools.py
 # @Software: PyCharm
 # @Affiliation: tfswufe.edu.cn
-import json
 from typing import List, Dict, Tuple, Callable, Any
 
 from dao.graph.graph_dao import GraphDao
@@ -14,7 +13,7 @@ from lang_chain.edge_audio import generate as generate_audio
 from lang_chain.poetry_search import search_by_chinese, search_by_poetry
 from lang_chain.retriever.audio_text_retriever import get_tts_model_name
 from lang_chain.retriever.chinese_text_for_poetry_retriever import extract_text
-from lang_chain.retriever.ppt_content_retriever import generate_ppt_content
+from lang_chain.retriever.ppt_content_retriever import generate_ppt_content, parse_ppt_content
 from lang_chain.sora_video import generate as _generate_video
 from lang_chain.digital_men import generate as _generate_digital_men
 from logger import Logger
@@ -90,9 +89,12 @@ def generate_digital_men(transcript: str) -> Tuple[str, str] | ChatResponse:
 
 
 def generate_ppt(text: str, history: List[List[str]] | None = None) -> Tuple[str, str]:
-    raw_text: str = generate_ppt_content(text, history)
-    ppt_content = json.loads(raw_text)
-    ppt_file: str = _generate_ppt(ppt_content)
+    try:
+        raw_text: str = generate_ppt_content(text, history)
+        ppt_content = parse_ppt_content(raw_text)
+        ppt_file: str = _generate_ppt(ppt_content)
+    except Exception as exc:
+        return f"PPT生成失败：{exc}", "ppt链接"
     return ppt_file, "ppt链接"
 
 
