@@ -41,5 +41,3 @@ while [ 1 ]; do
     sleep 3
   fi
 done
-
-
