@@ -52,9 +52,9 @@ def generate(text: str, model_name: str) -> str:
 
 def clear_audio_cache():
     try:
-        clear_files_by_timediff(_OUTPUT_DIR, datetime.timedelta(minutes=10).seconds)
+        clear_files_by_timediff(_OUTPUT_DIR, int(datetime.timedelta(hours=1).total_seconds()))
     except Exception as e:
         _logger.error(f"clear_audio_cache error: {e}")
 
 
-get_scheduler().add_job(clear_audio_cache, "interval", seconds=10, id="clear_audio_cache")
+get_scheduler().add_job(clear_audio_cache, "interval", minutes=30, id="clear_audio_cache")
