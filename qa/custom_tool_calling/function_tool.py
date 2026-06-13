@@ -124,7 +124,7 @@ def search_poetry_by_poetry_tool(
                         "poetry2poetry",
                         history)
     table = search_by_poetry(text)
-    return table, QuestionType.CHINESE2POETRY
+    return table, QuestionType.POETRY2POETRY
 
 
 def ppt_generation_tool(
@@ -181,8 +181,8 @@ FUNCTION_ARGS_MAPPING = {
     QuestionType.VIDEOS: lambda args: args[1:3],
     QuestionType.PPT: lambda args: args[1:3],
     QuestionType.DOCUMENT: lambda args: args[1:3],
-    QuestionType.CHINESE2POETRY: lambda args: args[:3],
-    QuestionType.POETRY2POETRY: lambda args: args[:3],
+    QuestionType.CHINESE2POETRY: lambda args: args[1:3],
+    QuestionType.POETRY2POETRY: lambda args: args[1:3],
     QuestionType.UNKNOWN: lambda args: args[1:3]
 }
 
