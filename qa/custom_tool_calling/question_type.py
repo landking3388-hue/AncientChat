@@ -25,13 +25,13 @@ class QuestionType(Enum):
 
 
 QUESTION_MAP = {
-    # "诗人简历": QuestionType.BASIC_INFO,
+    "诗人简历": QuestionType.BASIC_INFO,
     "人物关系": QuestionType.RELATION,
     "其他": QuestionType.UNKNOWN,
     "图片生成": QuestionType.IMAGES,
     "视频生成": QuestionType.VIDEOS,
     "音频生成": QuestionType.AUDIO,
-    # "检索增强": QuestionType.DOCUMENT,
+    "检索增强": QuestionType.DOCUMENT,
     "问候语": QuestionType.HELLO,
     "以古文搜古文":QuestionType.POETRY2POETRY,
     "以白话文搜古诗文": QuestionType.CHINESE2POETRY,

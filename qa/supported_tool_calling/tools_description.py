@@ -193,13 +193,13 @@ SEARCH_POETRY_BY_CHINESE = {
     "type": "function",
     "function": {
         "name": "search_poetry_by_chinese",
-        "description": "根据提供的白话文或者现代文，搜索古文",
+        "description": "根据用户的白话文、现代文或古代文化问题，先转换为古文检索词，再搜索古文依据，并基于古文和白话解释生成链路回答",
         "parameters": {
             "type": "object",
             "properties": {
                 "question": {
                     "type": "string",
-                    "description": "用户提供的内容",
+                    "description": "用户提供的白话问题、现代文描述或古代文化问题，例如：守孝期在古代是多长",
                 }
             }
         }
