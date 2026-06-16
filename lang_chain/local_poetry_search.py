@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Any
 
 
-_DATA_PATH = Path(__file__).resolve().parents[1] / "data" / "poetry_search" / "poems.json"
+_DATA_PATH = Path(__file__).resolve().parents[1] / "data" / "poetry_search" / "1234.json"
 
 
 @lru_cache(maxsize=1)
@@ -41,17 +41,22 @@ def _score(query: str, target: str) -> float:
 
 
 def value_for_chinese_search(poem: dict[str, str]) -> str:
-    book = poem.get("book") or f"{poem['dynasty']}诗文"
-    return "##@##".join([book, poem["title"], poem["text"], poem["translation"]])
+    return "##@##".join([
+        poem.get("dynasty", ""),
+        poem.get("author", ""),
+        poem.get("text", ""),
+        poem.get("title", ""),
+        poem.get("introduction", ""),
+    ])
 
 
 def value_for_classical_search(poem: dict[str, str]) -> str:
     return "##@##".join([
-        poem["dynasty"],
-        poem["author"],
-        poem["text"],
-        poem["title"],
-        poem["keywords"],
+        poem.get("dynasty", ""),
+        poem.get("author", ""),
+        poem.get("text", ""),
+        poem.get("title", ""),
+        poem.get("introduction", ""),
     ])
 
 
