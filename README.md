@@ -17,7 +17,7 @@
 [![Dependency Status](https://img.shields.io/librariesio/github/BinNong/AncientChat)](https://libraries.io/github/BinNong/AncientChat)
 [![Open Issues](https://img.shields.io/github/issues-raw/BinNong/AncientChat)](https://github.com/BinNong/AncientChat/issues)
 
- :vertical_traffic_light:  [哔哩哔哩详细视频介绍和引导](https://www.bilibili.com/video/BV17m41167KQ/?spm_id_from=333.788&vd_source=1a1de2338b5f002609ba8cca8fb71a13)
+基于https://github.com/BinNong/meet-libai开源项目开发
 
 <img src="./asset/images/ui.png" width="50%;" />
 
@@ -455,16 +455,3 @@ python graph_demo_ui.py
    ```
    如下图在左侧输入原始文本，以英文逗号结尾自动触发构建过程（需要一定的时间等待）！
    ![graph_entity_build](asset/images/llm_graph.jpg)
-
-
-
-------
-
- :vertical_traffic_light:  [哔哩哔哩详细视频介绍和引导](https://www.bilibili.com/video/BV17m41167KQ/?spm_id_from=333.788&vd_source=1a1de2338b5f002609ba8cca8fb71a13)
-
-# Coffee :custard:
-
-如果你愿意，你可以**<u>打赏</u>**我 <img src="https://www.pngitem.com/pimgs/m/145-1450643_providing-encouragement-and-support-to-help-people-icon.png" alt="Providing Encouragement And Support To Help People - Icon, HD Png Download  , Transparent Png Image - PNGitem" width="50" />，不在乎数量，你的一个不小心的举动是我前进的动力 <img src="https://static.vecteezy.com/system/resources/previews/028/086/542/non_2x/keep-going-arrow-succes-challenge-color-icon-illustration-vector.jpg" alt="keep going arrow succes challenge color icon vector illustration 28086542  Vector Art at Vecteezy" width="50" />，业余时间搬砖实属不易。
-
-<img src="asset/qr_code/ali_pay.png" width="200" ><img src="asset/qr_code/wechat_pay.png" width="200" >
-
