@@ -18,28 +18,23 @@ from lang_chain.sora_video import generate as _generate_video
 from lang_chain.digital_men import generate as _generate_digital_men
 from logger import Logger
 from qa.custom_tool_calling.prompt_templates import HELLO_ANSWER_TEMPLATE
-from qa.custom_tool_calling.question_parser import check_entity
 from qa.supported_tool_calling.tools_description import GET_PERSONAL_PROFILE, GET_RELATION_INFO, GET_HELLO_INFO, \
     GENERATE_IMAGES, GENERATE_SPEECH, CLONE_VOICE, GENERATE_VIDEO, SEARCH_DOCUMENTS, GENERATE_PPT, \
     SEARCH_POETRY_BY_CHINESE, SEARCH_POETRY_BY_POETRY, GENERATE_DIGITAL_MEN
 from qa.supported_tool_calling.utils import ChatResponse
 from lang_chain.ppt_generation import generate as _generate_ppt
 from third_api import voice_clone
+from qa.author_profile import get_author_profile_answer
 
 _dao = GraphDao()
 _logger: Logger = Logger("tool_calling")
 
 
 def get_personal_profile(name: str) -> ChatResponse:
-    result = check_entity(name)
-    if not result:
+    info = get_author_profile_answer(name)
+    if not info:
         return ChatResponse()
-    node_match = _dao.query_node("人物", name=name)
-    if node_match:
-        node = node_match.first()
-        info = f"{name}, 生于{node['DynastyBirth']}。{node['DynastyDeath']}时期文人。" + "下面以json格式给出这个人的完整基本信息：" + node.__repr__()
-
-        return ChatResponse(None, info)
+    return ChatResponse(None, info)
 
 
 def get_relation_info(first_entity_name, second_entity_name) -> ChatResponse:

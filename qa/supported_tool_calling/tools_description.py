@@ -8,14 +8,15 @@
 GET_PERSONAL_PROFILE = {
     "type": "function",
     "function": {
+
         "name": "get_personal_profile",
-        "description": "根据人的姓名，介绍这个人的基本信息",
+        "description": "根据诗人、作者或人物姓名，从数据库查询对应作者介绍，例如：杜甫是谁、介绍白居易、谁是李白",
         "parameters": {
             "type": "object",
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "人的姓名",
+                    "description": "诗人、作者或人物姓名",
                 },
             }
         },

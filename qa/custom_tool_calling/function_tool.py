@@ -25,21 +25,22 @@ from lang_chain.ppt_generation import generate as generate_ppt
 from lang_chain import rag_chain
 from lang_chain.poetry_search import search_by_chinese, search_by_poetry
 from lang_chain.retriever.chinese_text_for_poetry_retriever import extract_text
+from qa.author_profile import extract_author_name, get_author_profile_answer
 from qa.custom_tool_calling.prompt_templates import HELLO_ANSWER_TEMPLATE
 
 _dao = GraphDao()
 
 
-def basic_info_tool(entities: List[_Value] | None) -> Tuple[str, QuestionType] | None:
+def basic_info_tool(question: str, entities: List[_Value] | None) -> Tuple[str, QuestionType] | None:
     """人物基本信息"""
-    if not entities:
+    name = extract_author_name(question, entities)
+    if not name:
         return None
-    node_match = _dao.query_node("人物", name=entities[0].name)
-    if node_match:
-        node = node_match.first()
-        return (
-            f"{entities[0].name}, 生于{node['DynastyBirth']}。{node['DynastyDeath']}时期文人。" + "下面以json格式给出这个人的完整基本信息：" + node.__repr__(),
-            QuestionType.BASIC_INFO)
+
+    answer = get_author_profile_answer(name)
+    if answer:
+        return answer, QuestionType.BASIC_INFO
+    return None
 
 
 def relation_tool(entities: List[_Value] | None) -> Tuple[str, QuestionType] | None:
@@ -173,7 +174,7 @@ def map_question_to_function(
 
 
 FUNCTION_ARGS_MAPPING = {
-    QuestionType.BASIC_INFO: lambda args: args[-1:],
+    QuestionType.BASIC_INFO: lambda args: [args[1], args[-1]],
     QuestionType.RELATION: lambda args: args[-1:],
     QuestionType.HELLO: lambda args: [],
     QuestionType.IMAGES: lambda args: args[1:3],
