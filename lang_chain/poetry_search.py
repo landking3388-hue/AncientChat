@@ -218,7 +218,12 @@ def __build_search_request(query: str, conf_key: str, searcher: int, size: int =
     }
 
 
-def __search_values_by_queries(queries: List[str], conf_key: str, searcher: int) -> list[dict]:
+def __search_values_by_queries(
+        queries: List[str],
+        conf_key: str,
+        searcher: int,
+        one_result_per_query: bool = False,
+) -> list[dict]:
     results_by_value: dict[str, dict] = {}
     for query in queries:
         data = __build_search_request(query, conf_key, searcher)
@@ -235,12 +240,19 @@ def __search_values_by_queries(queries: List[str], conf_key: str, searcher: int)
                     "score": score,
                     "matched_queries": [query],
                 }
+                if one_result_per_query:
+                    break
                 continue
 
             cached = results_by_value[value]
             cached["score"] = max(cached["score"], score)
             if query not in cached["matched_queries"]:
                 cached["matched_queries"].append(query)
+            if one_result_per_query:
+                break
+
+        if one_result_per_query and len(results_by_value) >= _POETRY_RESULT_SIZE:
+            break
 
     results = list(results_by_value.values())
     results.sort(key=lambda item: item["score"], reverse=True)
@@ -316,14 +328,13 @@ def search_by_chinese(chinese_sentence: str) -> str:
     :return:
     """
     keywords = rewrite_chinese_to_classical_queries(chinese_sentence)
-    combined_query = " ".join(keywords)
-    search_queries = __dedupe_texts(keywords + [combined_query], _MAX_REWRITE_KEYWORDS + 1)
-    results = __search_values_by_queries(search_queries, "chinese-classical", 3)
+    search_queries = __dedupe_texts(keywords, _MAX_REWRITE_KEYWORDS)
+    results = __search_values_by_queries(search_queries, "chinese-classical", 3, one_result_per_query=True)
     fallback_used = False
 
     if not results:
         fallback_used = True
-        results = __search_values_by_queries([chinese_sentence], "chinese-poetry", 1)
+        results = __search_values_by_queries([chinese_sentence], "chinese-poetry", 1, one_result_per_query=True)
 
     if not results:
         return "未检索到相关古文结果。"

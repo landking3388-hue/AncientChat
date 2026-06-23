@@ -10,7 +10,7 @@ GET_PERSONAL_PROFILE = {
     "function": {
 
         "name": "get_personal_profile",
-        "description": "根据诗人、作者或人物姓名，从数据库查询对应作者介绍，例如：杜甫是谁、介绍白居易、谁是李白",
+        "description": "仅在用户明确询问诗人、作者或人物简介时，从数据库查询对应作者介绍，例如：杜甫是谁、介绍白居易、谁是李白。不要用于“李白会写代码吗”这类能力、假设或其他普通问题",
         "parameters": {
             "type": "object",
             "properties": {
