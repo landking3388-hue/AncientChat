@@ -68,10 +68,13 @@ def __construct_messages(question: str, history: List[List | None]) -> List[Dict
         {"role": "system",
          "content": "你现在扮演信息抽取的角色，要求根据用户输入和AI的回答，正确提取出信息。"}]
 
-    for user_input, ai_response in history:
-        messages.append({"role": "user", "content": user_input})
-        messages.append(
-            {"role": "assistant", "content": repr(ai_response)})
+    history_snippets = _build_history_snippets("", history)
+    if history_snippets:
+        messages.append({
+            "role": "user",
+            "content": "以下是历史对话摘要，请作为生成PPT的上下文参考：\n"
+                       + json.dumps(history_snippets, ensure_ascii=False),
+        })
 
     messages.append({"role": "user", "content": question})
     messages.append({"role": "user", "content": _GENERATE_PPT_PROMPT_})

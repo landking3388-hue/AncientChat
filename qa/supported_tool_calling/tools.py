@@ -83,14 +83,14 @@ def generate_digital_men(transcript: str) -> Tuple[str, str] | ChatResponse:
     return digital_men_url, "数字人链接"
 
 
-def generate_ppt(text: str, history: List[List[str]] | None = None) -> Tuple[str, str]:
+def generate_ppt(text: str, history: List[List[str]] | None = None) -> Tuple[str, str] | ChatResponse:
     try:
         raw_text: str = generate_ppt_content(text, history)
         ppt_content = parse_ppt_content(raw_text)
         ppt_content = append_history_snippets(ppt_content, text, history)
         ppt_file: str = _generate_ppt(ppt_content)
     except Exception as exc:
-        return f"PPT生成失败：{exc}", "ppt链接"
+        return ChatResponse(None, f"PPT生成失败：{exc}")
     return ppt_file, "ppt链接"
 
 

@@ -131,14 +131,14 @@ def search_poetry_by_poetry_tool(
 def ppt_generation_tool(
         question: str,
         history: List[List[str] | None] = None
-) -> Tuple[Tuple[str, str], QuestionType]:
+) -> Tuple[Tuple[str, str] | str, QuestionType]:
     try:
         raw_text: str = generate_ppt_content(question, history)
         ppt_content = parse_ppt_content(raw_text)
         ppt_content = append_history_snippets(ppt_content, question, history)
         ppt_file: str = generate_ppt(ppt_content)
     except Exception as exc:
-        return (f"PPT生成失败：{exc}", "ppt"), QuestionType.PPT
+        return f"PPT生成失败：{exc}", QuestionType.PPT
     return (ppt_file, "ppt"), QuestionType.PPT
 
 

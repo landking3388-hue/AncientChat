@@ -189,7 +189,6 @@ docker compose down
 
 - ##### 安装完成后，将数据导入neo4j     :smiling_imp:
 
-:warning:<u>*注：由于数据的建立和规整涉及第三方版权，本项目不提供完整李白的数据，只提供示例数据*</u>
 
 `Cypher query` 语句如下：
 
