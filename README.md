@@ -1,5 +1,5 @@
 <div align='center'>
- <img src="resource/avatar/libai.jpeg" alt="libai avatar" width="200" />
+ <img src="resource/avatar/AncientChat.png" alt="libai avatar" width="200" />
 
   # 「古人有话说」<img src="asset/images/AncientChat-logo.png" alt="AncientChat logo" width="50" /> AncientChat
 
