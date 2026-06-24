@@ -48,7 +48,7 @@ def chat_libai(message: str, history: List[Optional[List]] | None):
         partial_message = ""
 
         for chunk in answers[0][1]:
-            partial_message += chunk.choices[0].delta.content
+            partial_message += chunk.choices[0].delta.content or ""
             yield partial_message
 
         partial_message += answers[0][0]

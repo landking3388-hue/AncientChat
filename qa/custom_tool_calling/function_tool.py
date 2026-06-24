@@ -11,7 +11,7 @@ from openai.types.chat import ChatCompletionChunk
 
 from dao.graph.graph_dao import GraphDao
 from lang_chain.client.client_factory import ClientFactory
-from lang_chain.retriever.ppt_content_retriever import generate_ppt_content, parse_ppt_content
+from lang_chain.retriever.ppt_content_retriever import append_history_snippets, generate_ppt_content, parse_ppt_content
 from qa.custom_tool_calling.question_type import QuestionType
 from model.graph_entity.search_model import _Value
 from lang_chain.retriever.image_text_retriever import extract_text as extract_image_text
@@ -135,6 +135,7 @@ def ppt_generation_tool(
     try:
         raw_text: str = generate_ppt_content(question, history)
         ppt_content = parse_ppt_content(raw_text)
+        ppt_content = append_history_snippets(ppt_content, question, history)
         ppt_file: str = generate_ppt(ppt_content)
     except Exception as exc:
         return (f"PPT生成失败：{exc}", "ppt"), QuestionType.PPT

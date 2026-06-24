@@ -12,6 +12,7 @@ from icecream import ic
 from lang_chain.client.client_factory import ClientFactory
 from model.graph_entity.search_model import _Value
 from model.graph_entity.search_service import search
+from qa.author_profile import is_author_profile_question
 from qa.custom_tool_calling.prompt_templates import get_question_parser_prompt
 from qa.custom_tool_calling.question_type import QuestionType, QUESTION_MAP
 
@@ -29,6 +30,8 @@ def parse_question(question: str) -> QuestionType:
     prompt = get_question_parser_prompt(question)
     parse_result = ClientFactory().get_client().chat_with_ai(prompt)
     question_type = QUESTION_MAP[parse_result]
+    if question_type == QuestionType.BASIC_INFO and not is_author_profile_question(question):
+        question_type = QuestionType.UNKNOWN
     ic(question_type)
 
     try:
@@ -54,4 +57,3 @@ def check_entity(question: str) -> List[_Value] | None:
 
     else:
         return None
-
